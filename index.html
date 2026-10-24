@@ -1,0 +1,399 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>United Hotels | Hotel Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- WELCOME PAGE -->
+<section id="welcomePage">
+    <div class="welcome-banner">
+        <nav class="top-nav">
+            <div class="brand">
+                <div class="hotel-logo">UH</div>
+                <div>
+                    <h2>UNITED HOTELS</h2>
+                    <small>Comfort • Care • Luxury</small>
+                </div>
+            </div>
+            <span class="nav-tag">A Place Like Home</span>
+        </nav>
+
+        <div class="welcome-content">
+            <div class="welcome-text">
+                <p class="eyebrow">WELCOME TO UNITED HOTELS</p>
+                <h1>Your Comfort,<br>Our Commitment.</h1>
+                <p>
+                    Experience a relaxing stay, warm hospitality and
+                    delicious food. We make every visit comfortable,
+                    memorable and special for you.
+                </p>
+                <a href="#accountBox" class="primary-link">Get Started</a>
+            </div>
+
+            <div class="account-box" id="accountBox">
+                <h2>Welcome!</h2>
+                <p class="muted">Login or create your account</p>
+
+                <div class="switch-buttons">
+                    <button type="button" id="loginTab"
+                        class="switch-btn active"
+                        onclick="showAuth('login')">Login</button>
+                    <button type="button" id="registerTab"
+                        class="switch-btn"
+                        onclick="showAuth('register')">Register</button>
+                </div>
+
+                <form id="loginForm">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail"
+                        placeholder="Enter your email" required>
+
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword"
+                        placeholder="Enter your password" required>
+
+                    <button type="submit" class="main-btn">Login to Hotel</button>
+                </form>
+
+                <form id="registerForm" class="hidden">
+                    <label for="regName">Full Name</label>
+                    <input type="text" id="regName"
+                        placeholder="Enter your full name"
+                        minlength="2" required>
+
+                    <label for="regEmail">Email Address</label>
+                    <input type="email" id="regEmail"
+                        placeholder="Enter your email" required>
+
+                    <label for="regPassword">Create Password</label>
+                    <input type="password" id="regPassword"
+                        placeholder="Minimum 6 characters"
+                        minlength="6" required>
+
+                    <button type="submit" class="main-btn">Create Account</button>
+                </form>
+
+                <p class="form-note">
+                    Your stay begins with a warm welcome.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MAIN DASHBOARD -->
+<main id="dashboard" class="hidden">
+
+    <header class="dashboard-header">
+        <div class="brand">
+            <div class="hotel-logo">UH</div>
+            <div>
+                <h2>UNITED HOTELS</h2>
+                <small>Hotel Management System</small>
+            </div>
+        </div>
+
+        <div class="user-area">
+            <span id="welcomeUser">Welcome!</span>
+            <button type="button" class="logout-btn"
+                onclick="logout()">Logout</button>
+        </div>
+    </header>
+
+    <div class="dashboard-banner">
+        <p>YOUR HOTEL AT A GLANCE</p>
+        <h1>Manage Your Stay</h1>
+        <span>Rooms, delicious food and a comfortable experience.</span>
+    </div>
+
+    <!-- HOTEL STATISTICS -->
+    <section class="section">
+        <h2>Hotel Overview</h2>
+        <p class="muted">Current room and member information</p>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-icon">🏨</span>
+                <p>Total Rooms</p>
+                <h2 id="totalRooms">20</h2>
+            </div>
+
+            <div class="stat-card available">
+                <span class="stat-icon">🟢</span>
+                <p>Available Rooms</p>
+                <h2 id="availableRooms">20</h2>
+            </div>
+
+            <div class="stat-card booked">
+                <span class="stat-icon">🔑</span>
+                <p>Booked Rooms</p>
+                <h2 id="bookedRooms">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-icon">🛏️</span>
+                <p>Room Types</p>
+                <h2 id="roomTypes">3</h2>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-icon">👥</span>
+                <p>Registered Members</p>
+                <h2 id="totalMembers">0</h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROOM GALLERY -->
+    <section class="section" id="rooms">
+        <h2>Explore Our Rooms</h2>
+        <p class="muted">Choose the room that suits you best.</p>
+
+        <div class="room-grid">
+            <article class="room-card">
+                <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=700&q=80"
+                    alt="Standard room">
+                <div class="room-info">
+                    <h3>Standard Room</h3>
+                    <p>Simple, clean and comfortable.</p>
+                    <strong>₹1,500 / night</strong>
+                </div>
+            </article>
+
+            <article class="room-card">
+                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=700&q=80"
+                    alt="Deluxe room">
+                <div class="room-info">
+                    <h3>Deluxe Room</h3>
+                    <p>Extra comfort with elegant interiors.</p>
+                    <strong>₹2,500 / night</strong>
+                </div>
+            </article>
+
+            <article class="room-card">
+                <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=700&q=80"
+                    alt="Suite room">
+                <div class="room-info">
+                    <h3>Luxury Suite</h3>
+                    <p>A spacious room for a special stay.</p>
+                    <strong>₹4,000 / night</strong>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ROOM BOOKING -->
+    <section class="section two-column">
+        <div class="panel">
+            <h2>Book Your Room</h2>
+            <p class="muted">Select your room and stay dates.</p>
+
+            <form id="bookingForm">
+                <label for="roomType">Room Type</label>
+                <select id="roomType" required>
+                    <option value="Standard">Standard - ₹1,500/night</option>
+                    <option value="Deluxe">Deluxe - ₹2,500/night</option>
+                    <option value="Suite">Suite - ₹4,000/night</option>
+                </select>
+
+                <label for="checkIn">Check-in</label>
+                <input type="date" id="checkIn" required>
+
+                <label for="checkOut">Check-out</label>
+                <input type="date" id="checkOut" required>
+
+                <label for="guests">Number of Guests</label>
+                <select id="guests">
+                    <option value="1">1 Guest</option>
+                    <option value="2">2 Guests</option>
+                    <option value="3">3 Guests</option>
+                    <option value="4">4 Guests</option>
+                </select>
+
+                <button type="submit" class="main-btn">
+                    Confirm Room Booking
+                </button>
+            </form>
+        </div>
+
+        <div class="panel booking-help">
+            <h2>Room Booking Details</h2>
+            <p>Our room categories have these starting rates:</p>
+            <ul>
+                <li>Standard: ₹1,500 per night</li>
+                <li>Deluxe: ₹2,500 per night</li>
+                <li>Luxury Suite: ₹4,000 per night</li>
+            </ul>
+            <p>
+                Your room bill is calculated according to the selected
+                room type and number of nights.
+            </p>
+            <p class="note">
+                Note: This student project uses a demo room inventory.
+            </p>
+        </div>
+    </section>
+
+    <!-- FOOD MENU -->
+    <section class="section" id="food">
+        <h2>Restaurant & Food Menu</h2>
+        <p class="muted">Fresh food to make your stay even better.</p>
+
+        <div class="food-grid">
+            <article class="food-card">
+                <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=500&q=80"
+                    alt="Veg thali">
+                <div class="food-info">
+                    <h3>Veg Thali</h3>
+                    <p>₹180</p>
+                    <button type="button" onclick="addFood('Veg Thali',180)">Add to Order</button>
+                </div>
+            </article>
+
+            <article class="food-card">
+                <img src="https://images.unsplash.com/photo-1563379091339-03246963d51a?auto=format&fit=crop&w=500&q=80"
+                    alt="Biryani">
+                <div class="food-info">
+                    <h3>Paneer Biryani</h3>
+                    <p>₹220</p>
+                    <button type="button" onclick="addFood('Paneer Biryani',220)">Add to Order</button>
+                </div>
+            </article>
+
+            <article class="food-card">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=500&q=80"
+                    alt="Pizza">
+                <div class="food-info">
+                    <h3>Pizza</h3>
+                    <p>₹250</p>
+                    <button type="button" onclick="addFood('Pizza',250)">Add to Order</button>
+                </div>
+            </article>
+
+            <article class="food-card">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80"
+                    alt="Burger">
+                <div class="food-info">
+                    <h3>Burger</h3>
+                    <p>₹120</p>
+                    <button type="button" onclick="addFood('Burger',120)">Add to Order</button>
+                </div>
+            </article>
+
+            <article class="food-card">
+                <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=500&q=80"
+                    alt="Cold coffee">
+                <div class="food-info">
+                    <h3>Cold Coffee</h3>
+                    <p>₹100</p>
+                    <button type="button" onclick="addFood('Cold Coffee',100)">Add to Order</button>
+                </div>
+            </article>
+
+            <article class="food-card">
+                <img src="https://images.unsplash.com/photo-1488900128323-21503983a07e?auto=format&fit=crop&w=500&q=80"
+                    alt="Ice cream">
+                <div class="food-info">
+                    <h3>Ice Cream</h3>
+                    <p>₹80</p>
+                    <button type="button" onclick="addFood('Ice Cream',80)">Add to Order</button>
+                </div>
+            </article>
+        </div>
+
+        <div class="panel cart-panel">
+            <h2>Your Food Order</h2>
+            <div id="foodCart">No food items added.</div>
+            <h3 id="foodTotal">Food Total: ₹0</h3>
+            <button type="button" class="main-btn" onclick="placeFoodOrder()">
+                Confirm Food Order
+            </button>
+        </div>
+    </section>
+
+    <!-- BOOKINGS -->
+    <section class="section">
+        <h2>My Bookings & Food Orders</h2>
+        <div id="myBookings">
+            <p>No bookings yet.</p>
+        </div>
+    </section>
+
+    <!-- FINAL BILL -->
+    <section class="section" id="billing">
+        <div class="panel">
+            <h2>My Final Bill</h2>
+            <p class="muted">
+                Room charges and confirmed food orders are shown here.
+            </p>
+
+            <div id="billDetails">
+                <p>No bill available yet. Book a room or order food.</p>
+            </div>
+
+            <div class="bill-total">
+                <span>Grand Total</span>
+                <span id="grandTotal">₹0</span>
+            </div>
+
+            <button type="button" id="checkoutBtn"
+                class="main-btn" onclick="checkout()">
+                Complete Checkout
+            </button>
+
+            <p class="note">
+                Demo only: checkout records the bill as paid;
+                no real payment is processed.
+            </p>
+        </div>
+    </section>
+
+    <!-- FEEDBACK -->
+    <section class="section" id="feedback">
+        <div class="panel">
+            <h2>Share Your Experience</h2>
+            <p class="muted">
+                Your feedback helps us improve our hospitality.
+            </p>
+
+            <form id="feedbackForm">
+                <label for="rating">Your Rating</label>
+                <select id="rating" required>
+                    <option value="">Choose a rating</option>
+                    <option value="5">★★★★★ Excellent</option>
+                    <option value="4">★★★★ Very Good</option>
+                    <option value="3">★★★ Good</option>
+                    <option value="2">★★ Average</option>
+                    <option value="1">★ Needs Improvement</option>
+                </select>
+
+                <label for="feedbackMessage">Your Comments</label>
+                <textarea id="feedbackMessage" rows="4" maxlength="500"
+                    placeholder="Write your feedback..." required></textarea>
+
+                <button type="submit" class="main-btn">
+                    Submit Feedback
+                </button>
+            </form>
+
+            <h3>Customer Reviews</h3>
+            <div id="feedbackList">No reviews yet.</div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <h3>UNITED HOTELS</h3>
+    <p>Making every stay a memorable experience.</p>
+    <p>© 2026 United Hotels | Student Project</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
